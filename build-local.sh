@@ -84,8 +84,8 @@ After=network.target remote-fs.target nss-lookup.target
 
 [Service]
 Type=forking
-ExecStart=/usr/local/samba/sbin/samba -D
-PIDFile=/usr/local/samba/var/run/samba.pid
+ExecStart=/opt/pontus/pontus-samba/current/sbin/samba -D
+PIDFile=/opt/pontus/pontus-samba/current/var/run/samba.pid
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
