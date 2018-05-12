@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR="$( cd "$(dirname "$0")" ; pwd -P )"
-VERSION=4.8.0
+VERSION=4.8.1
 DISTDIR="$DIR/../pontus-dist/opt/pontus/pontus-samba";
 TARFILE=$DIR/pontus-samba-${VERSION}.tar.gz
 
@@ -35,8 +35,9 @@ if [[ ! -d $DISTDIR ]]; then
   mkdir -p $DISTDIR
 fi
 
-cd $DISTDIR/../../../
+cd $DISTDIR
 rm -rf *
+cd $DISTDIR/../../../
 tar xvfz $TARFILE
 cd $DISTDIR
 ln -s $VERSION current
@@ -115,12 +116,12 @@ samba-tool dns add 127.0.0.1 2.0.17.172.in-addr.arpa 2.0.17.172.in-addr.arpa  PT
 
 
 
-samba-tool user create hbase/`hostname -f` pa55wordBig4Data4Admin
+samba-tool user create hbase/pontus-sandbox.pontusvision.com pa55wordBig4Data4Admin
 samba-tool spn add hbase/pontus-sandbox.pontusvision.com  hbase/pontus-sandbox.pontusvision.com --realm=PONTUSVISION.COM
-samba-tool domain exportkeytab /etc/security/keytabs/hbase.service.keytab --principal=hbase/`hostname -f`@PONTUSVISION.COM
-samba-tool user create zookeeper/`hostname -f` pa55wordBig4Data4Admin
+samba-tool domain exportkeytab /etc/security/keytabs/hbase.service.keytab --principal=hbase/pontus-sandbox.pontusvision.com@PONTUSVISION.COM
+samba-tool user create zookeeper/pontus-sandbox.pontusvision.com pa55wordBig4Data4Admin
 samba-tool spn add zookeeper/pontus-sandbox.pontusvision.com zookeeper/pontus-sandbox.pontusvision.com --realm=PONTUSVISION.COM
-samba-tool domain exportkeytab /etc/security/keytabs/zookeeper.service.keytab --principal=zookeeper/`hostname -f`@PONTUSVISION.COM
+samba-tool domain exportkeytab /etc/security/keytabs/zookeeper.service.keytab --principal=zookeeper/pontus-sandbox.pontusvision.com@PONTUSVISION.COM
 
 chown -R pontus: /etc/security/keytabs/
 
