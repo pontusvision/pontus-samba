@@ -113,6 +113,7 @@ samba-tool dns add 127.0.0.1  pontusvision.com pontus-sandbox A `hostname -I` --
 
 samba-tool dns zonecreate  `hostname` 2.0.17.172.in-addr.arpa --password=pa55wordpa55wordPASSWD999 --username=Administrator
 samba-tool dns add 127.0.0.1 2.0.17.172.in-addr.arpa 2.0.17.172.in-addr.arpa  PTR pontus-sandbox.pontusvision.com -UAdministrator --password=pa55wordpa55wordPASSWD999
+samba-tool user setexpiry Administrator --noexpiry
 
 
 
