@@ -52,10 +52,10 @@ fi
 
 cat << 'EOF2' >> /etc/krb5.conf
 [libdefaults]
-  renew_lifetime = 7d
+  renew_lifetime = 700d
   forwardable = true
   default_realm = PONTUSVISION.COM
-  ticket_lifetime = 24h
+  ticket_lifetime = 24d
   dns_lookup_realm = false
   dns_lookup_kdc = false
   default_ccache_name = /tmp/krb5cc_%{uid}
