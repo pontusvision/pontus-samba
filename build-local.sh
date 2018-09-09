@@ -78,6 +78,8 @@ cat << 'EOF2' >> /etc/krb5.conf
 
 EOF2
 
+> /etc/systemd/system/samba.service
+
 cat << 'EOF2' >> /etc/systemd/system/samba.service
 [Unit]
 Description=Samba Active Directory Domain Controller
