@@ -1,7 +1,10 @@
 #!/bin/bash
 
+PWD=`pwd`
 DIR="$( cd "$(dirname "$0")" ; pwd -P )"
+cd ${DIR}/docker
 
-docker build --rm  --no-cache -t pontusvisiongdpr/open-source-gdpr2.2:latest  ${DIR}/docker
+docker build  -t pontusvisiongdpr/samba:centos7  .
 
+cd $PWD
 
