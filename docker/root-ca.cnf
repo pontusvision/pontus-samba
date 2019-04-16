@@ -1,0 +1,5 @@
+[root_ca]
+basicConstraints = critical,CA:TRUE,pathlen:1
+keyUsage = critical, nonRepudiation, cRLSign, keyCertSign
+subjectKeyIdentifier=hash
+ 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-DIR="$( cd "$(dirname "$0")" ; pwd -P )"
+DIR=/tmp
 VERSION=4.8.1
-DISTDIR="$DIR/../pontus-dist/opt/pontus/pontus-samba";
+DISTDIR="/opt/pontus/pontus-samba";
 TARFILE=$DIR/pontus-samba-${VERSION}.tar.gz
 
 CURDIR=`pwd`
@@ -11,9 +11,9 @@ cd $DIR
 echo DIR is $DIR
 echo TARFILE is $TARFILE
 
-if [[ ! -f $TARFILE ]]; then
+#if [[ ! -f $TARFILE ]]; then
 
-yum -y install attr bind-utils docbook-style-xsl gcc gdb krb5-workstation        libsemanage-python libxslt perl perl-ExtUtils-MakeMaker        perl-Parse-Yapp perl-Test-Base pkgconfig policycoreutils-python        python-crypto gnutls-devel libattr-devel keyutils-libs-devel        libacl-devel libaio-devel libblkid-devel libxml2-devel openldap-devel        pam-devel popt-devel python-devel readline-devel zlib-devel systemd-devel
+yum -y install attr bind-utils docbook-style-xsl gcc gdb krb5-workstation        libsemanage-python libxslt perl perl-ExtUtils-MakeMaker        perl-Parse-Yapp perl-Test-Base pkgconfig policycoreutils-python        python-crypto gnutls-devel libattr-devel keyutils-libs-devel        libacl-devel libaio-devel libblkid-devel libxml2-devel openldap-devel        pam-devel popt-devel python-devel readline-devel zlib-devel systemd-devel wget
 
 
 wget https://download.samba.org/pub/samba/stable/samba-${VERSION}.tar.gz
@@ -27,19 +27,17 @@ make -j 4
 make install
 
 
-tar cpzvf ${TARFILE} /opt/pontus/pontus-samba
+#tar cpzvf ${TARFILE} /opt/pontus/pontus-samba
 
-fi
+#fi
 
 if [[ ! -d $DISTDIR ]]; then
   mkdir -p $DISTDIR
 fi
 
-cd $DISTDIR
-rm -rf *
-cd $DISTDIR/../../../
-tar xvfz $TARFILE
-cd $DISTDIR
+#cd $DISTDIR/../../../
+#cd $DISTDIR
+cd /opt/pontus/pontus-samba
 ln -s $VERSION current
 cd current
 
